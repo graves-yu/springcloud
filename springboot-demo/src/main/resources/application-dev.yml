@@ -1,0 +1,35 @@
+#开发环境
+#spring相关配置
+spring: 
+  datasource:
+    url: jdbc:mysql://localhost:3306/test
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 123456
+    initial-size: 10
+    max-active: 20
+    max-idle: 8
+    min-idle: 8
+  
+  kafka:
+    bootstrap-servers: 172.16.0.40:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      group-id: test
+      enable-auto-commit: true
+      auto-commit-interval: 1000
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      
+mybatis:
+  mapper-locations: classpath:mapping/*Mapper.xml
+  type-aliases-package: com.graves.entity
+    
+#showSql
+logging:
+  level:
+    com:
+      graves:
+        mapper : debug
